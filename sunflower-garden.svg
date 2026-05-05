@@ -545,7 +545,10 @@
 <line x1="899.0" y1="67.0" x2="899.0" y2="69.4" stroke="#22543d" stroke-width="1" stroke-linecap="round"/>
 <ellipse cx="903.5" cy="67.0" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(0.0,903.5,67.0)"/><ellipse cx="901.2" cy="70.9" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(60.0,901.2,70.9)"/><ellipse cx="896.8" cy="70.9" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(120.0,896.8,70.9)"/><ellipse cx="894.5" cy="67.0" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(180.0,894.5,67.0)"/><ellipse cx="896.8" cy="63.1" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(240.0,896.8,63.1)"/><ellipse cx="901.2" cy="63.1" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(300.0,901.2,63.1)"/>
 <circle cx="899.0" cy="67.0" r="1.7" fill="#4a1d96"></circle>
-<circle cx="899.0" cy="83.0" r="2.5" fill="#3d2800" opacity="0.5"/>
+<line x1="899.0" y1="83.0" x2="899.0" y2="85.4" stroke="#22543d" stroke-width="1" stroke-linecap="round"/>
+<ellipse cx="903.5" cy="83.0" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(0.0,903.5,83.0)"/><ellipse cx="901.2" cy="86.9" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(60.0,901.2,86.9)"/><ellipse cx="896.8" cy="86.9" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(120.0,896.8,86.9)"/><ellipse cx="894.5" cy="83.0" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(180.0,894.5,83.0)"/><ellipse cx="896.8" cy="79.1" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(240.0,896.8,79.1)"/><ellipse cx="901.2" cy="79.1" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(300.0,901.2,79.1)"/>
+<circle cx="899.0" cy="83.0" r="1.7" fill="#4a1d96"></circle>
+<circle cx="899.0" cy="99.0" r="2.5" fill="#3d2800" opacity="0.5"/>
 
   <g id="bee0" opacity="0">
     <!-- Body -->
