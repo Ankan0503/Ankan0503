@@ -565,9 +565,12 @@
 <line x1="899.0" y1="99.0" x2="899.0" y2="102.2" stroke="#22543d" stroke-width="1" stroke-linecap="round"/>
 <ellipse cx="905.0" cy="99.0" rx="4.0" ry="2.2" fill="#6b46c1" opacity="0.9" transform="rotate(0.0,905.0,99.0)"/><ellipse cx="902.0" cy="104.2" rx="4.0" ry="2.2" fill="#6b46c1" opacity="0.9" transform="rotate(60.0,902.0,104.2)"/><ellipse cx="896.0" cy="104.2" rx="4.0" ry="2.2" fill="#6b46c1" opacity="0.9" transform="rotate(120.0,896.0,104.2)"/><ellipse cx="893.0" cy="99.0" rx="4.0" ry="2.2" fill="#6b46c1" opacity="0.9" transform="rotate(180.0,893.0,99.0)"/><ellipse cx="896.0" cy="93.8" rx="4.0" ry="2.2" fill="#6b46c1" opacity="0.9" transform="rotate(240.0,896.0,93.8)"/><ellipse cx="902.0" cy="93.8" rx="4.0" ry="2.2" fill="#6b46c1" opacity="0.9" transform="rotate(300.0,902.0,93.8)"/>
 <circle cx="899.0" cy="99.0" r="2.2" fill="#5b21b6"></circle>
-<line x1="899.0" y1="115.0" x2="899.0" y2="117.4" stroke="#22543d" stroke-width="1" stroke-linecap="round"/>
-<ellipse cx="903.5" cy="115.0" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(0.0,903.5,115.0)"/><ellipse cx="901.2" cy="118.9" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(60.0,901.2,118.9)"/><ellipse cx="896.8" cy="118.9" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(120.0,896.8,118.9)"/><ellipse cx="894.5" cy="115.0" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(180.0,894.5,115.0)"/><ellipse cx="896.8" cy="111.1" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(240.0,896.8,111.1)"/><ellipse cx="901.2" cy="111.1" rx="3.0" ry="1.7" fill="#553c9a" opacity="0.9" transform="rotate(300.0,901.2,111.1)"/>
-<circle cx="899.0" cy="115.0" r="1.7" fill="#4a1d96"></circle>
+<line x1="899.0" y1="115.0" x2="899.0" y2="120.2" stroke="#22543d" stroke-width="1" stroke-linecap="round"/>
+<ellipse cx="908.8" cy="115.0" rx="6.5" ry="3.6" fill="#f59e0b" opacity="0.9" transform="rotate(0.0,908.8,115.0)"/><ellipse cx="905.9" cy="121.9" rx="6.5" ry="3.6" fill="#f59e0b" opacity="0.9" transform="rotate(45.0,905.9,121.9)"/><ellipse cx="899.0" cy="124.8" rx="6.5" ry="3.6" fill="#f59e0b" opacity="0.9" transform="rotate(90.0,899.0,124.8)"/><ellipse cx="892.1" cy="121.9" rx="6.5" ry="3.6" fill="#f59e0b" opacity="0.9" transform="rotate(135.0,892.1,121.9)"/><ellipse cx="889.2" cy="115.0" rx="6.5" ry="3.6" fill="#f59e0b" opacity="0.9" transform="rotate(180.0,889.2,115.0)"/><ellipse cx="892.1" cy="108.1" rx="6.5" ry="3.6" fill="#f59e0b" opacity="0.9" transform="rotate(225.0,892.1,108.1)"/><ellipse cx="899.0" cy="105.2" rx="6.5" ry="3.6" fill="#f59e0b" opacity="0.9" transform="rotate(270.0,899.0,105.2)"/><ellipse cx="905.9" cy="108.1" rx="6.5" ry="3.6" fill="#f59e0b" opacity="0.9" transform="rotate(315.0,905.9,108.1)"/>
+<circle cx="899.0" cy="115.0" r="3.6" fill="#b45309"><animate attributeName="r" values="3.6;4.1;3.6" dur="2s" repeatCount="indefinite"/></circle>
+<line x1="899.0" y1="131.0" x2="899.0" y2="134.2" stroke="#22543d" stroke-width="1" stroke-linecap="round"/>
+<ellipse cx="905.0" cy="131.0" rx="4.0" ry="2.2" fill="#6b46c1" opacity="0.9" transform="rotate(0.0,905.0,131.0)"/><ellipse cx="902.0" cy="136.2" rx="4.0" ry="2.2" fill="#6b46c1" opacity="0.9" transform="rotate(60.0,902.0,136.2)"/><ellipse cx="896.0" cy="136.2" rx="4.0" ry="2.2" fill="#6b46c1" opacity="0.9" transform="rotate(120.0,896.0,136.2)"/><ellipse cx="893.0" cy="131.0" rx="4.0" ry="2.2" fill="#6b46c1" opacity="0.9" transform="rotate(180.0,893.0,131.0)"/><ellipse cx="896.0" cy="125.8" rx="4.0" ry="2.2" fill="#6b46c1" opacity="0.9" transform="rotate(240.0,896.0,125.8)"/><ellipse cx="902.0" cy="125.8" rx="4.0" ry="2.2" fill="#6b46c1" opacity="0.9" transform="rotate(300.0,902.0,125.8)"/>
+<circle cx="899.0" cy="131.0" r="2.2" fill="#5b21b6"></circle>
 
   <g id="bee0" opacity="0">
     <!-- Body -->
@@ -592,13 +595,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 202,-27 C 100,-14 0,-20 0,0"
+      path="M 154,-27 C 76,-14 0,-20 0,0"
       dur="6.9s" begin="0.5s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="6.9s" begin="0.5s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee0" attributeName="transform" type="translate"
-    values="850,110" dur="6.9s" begin="0.5s" fill="freeze"
+    values="898,110" dur="6.9s" begin="0.5s" fill="freeze"
     additive="sum"/>
 
 
@@ -625,13 +628,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 203,3 C 101,1 0,-20 0,0"
+      path="M 155,3 C 77,1 0,-20 0,0"
       dur="7.7s" begin="1.3s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="7.7s" begin="1.3s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee1" attributeName="transform" type="translate"
-    values="849,108" dur="7.7s" begin="1.3s" fill="freeze"
+    values="897,108" dur="7.7s" begin="1.3s" fill="freeze"
     additive="sum"/>
 
 
@@ -658,13 +661,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -914,-37 C -458,-19 0,-20 0,0"
+      path="M -962,-37 C -482,-19 0,-20 0,0"
       dur="4.9s" begin="1.8s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="4.9s" begin="1.8s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee2" attributeName="transform" type="translate"
-    values="854,105" dur="4.9s" begin="1.8s" fill="freeze"
+    values="902,105" dur="4.9s" begin="1.8s" fill="freeze"
     additive="sum"/>
 
 
@@ -691,13 +694,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -653,-43 C -327,-22 0,-20 0,0"
+      path="M -909,-11 C -455,-6 0,-20 0,0"
       dur="4.6s" begin="2.7s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="4.6s" begin="2.7s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee3" attributeName="transform" type="translate"
-    values="593,144" dur="4.6s" begin="2.7s" fill="freeze"
+    values="849,112" dur="4.6s" begin="2.7s" fill="freeze"
     additive="sum"/>
 
 
@@ -724,13 +727,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -658,-8 C -329,-4 0,-20 0,0"
+      path="M -914,24 C -457,12 0,-20 0,0"
       dur="6.2s" begin="3.0s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="6.2s" begin="3.0s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee4" attributeName="transform" type="translate"
-    values="598,143" dur="6.2s" begin="3.0s" fill="freeze"
+    values="854,111" dur="6.2s" begin="3.0s" fill="freeze"
     additive="sum"/>
 
 
@@ -757,13 +760,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 454,-65 C 226,-33 0,-20 0,0"
+      path="M 198,-33 C 98,-17 0,-20 0,0"
       dur="4.4s" begin="3.9s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="4.4s" begin="3.9s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee5" attributeName="transform" type="translate"
-    values="598,138" dur="4.4s" begin="3.9s" fill="freeze"
+    values="854,106" dur="4.4s" begin="3.9s" fill="freeze"
     additive="sum"/>
 
 
@@ -790,13 +793,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 601,-72 C 300,-37 0,-20 0,0"
+      path="M 457,-56 C 228,-29 0,-20 0,0"
       dur="6.5s" begin="4.2s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="6.5s" begin="4.2s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee6" attributeName="transform" type="translate"
-    values="451,155" dur="6.5s" begin="4.2s" fill="freeze"
+    values="595,139" dur="6.5s" begin="4.2s" fill="freeze"
     additive="sum"/>
 
 
@@ -823,13 +826,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -509,-87 C -255,-44 0,-20 0,0"
+      path="M -653,-71 C -327,-36 0,-20 0,0"
       dur="5.7s" begin="5.1s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="5.7s" begin="5.1s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee7" attributeName="transform" type="translate"
-    values="449,157" dur="5.7s" begin="5.1s" fill="freeze"
+    values="593,141" dur="5.7s" begin="5.1s" fill="freeze"
     additive="sum"/>
 
 
@@ -856,13 +859,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 187,-11 C 93,-6 0,-20 0,0"
+      path="M 459,-59 C 229,-30 0,-20 0,0"
       dur="5.8s" begin="5.6s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="5.8s" begin="5.6s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee8" attributeName="transform" type="translate"
-    values="865,89" dur="5.8s" begin="5.6s" fill="freeze"
+    values="593,137" dur="5.8s" begin="5.6s" fill="freeze"
     additive="sum"/>
 
 
@@ -889,13 +892,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -929,28 C -465,13 0,-20 0,0"
+      path="M -513,-36 C -257,-19 0,-20 0,0"
       dur="7.3s" begin="5.5s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="7.3s" begin="5.5s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee9" attributeName="transform" type="translate"
-    values="869,93" dur="7.3s" begin="5.5s" fill="freeze"
+    values="453,157" dur="7.3s" begin="5.5s" fill="freeze"
     additive="sum"/>
 
 
@@ -922,13 +925,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 184,-5 C 92,-3 0,-20 0,0"
+      path="M 600,-53 C 300,-27 0,-20 0,0"
       dur="7.7s" begin="6.1s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="7.7s" begin="6.1s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee10" attributeName="transform" type="translate"
-    values="868,106" dur="7.7s" begin="6.1s" fill="freeze"
+    values="452,154" dur="7.7s" begin="6.1s" fill="freeze"
     additive="sum"/>
 
 
@@ -955,13 +958,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -931,29 C -466,14 0,-20 0,0"
+      path="M -931,45 C -466,22 0,-20 0,0"
       dur="5.4s" begin="7.0s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="5.4s" begin="7.0s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee11" attributeName="transform" type="translate"
-    values="871,105" dur="5.4s" begin="7.0s" fill="freeze"
+    values="871,89" dur="5.4s" begin="7.0s" fill="freeze"
     additive="sum"/>
 
 
@@ -988,13 +991,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -415,20 C -208,9 0,-20 0,0"
+      path="M -927,68 C -464,33 0,-20 0,0"
       dur="4.9s" begin="8.2s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="4.9s" begin="8.2s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee12" attributeName="transform" type="translate"
-    values="355,144" dur="4.9s" begin="8.2s" fill="freeze"
+    values="867,96" dur="4.9s" begin="8.2s" fill="freeze"
     additive="sum"/>
 
 
@@ -1021,13 +1024,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 700,-81 C 349,-41 0,-20 0,0"
+      path="M 188,-49 C 93,-25 0,-20 0,0"
       dur="6.9s" begin="8.0s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="6.9s" begin="8.0s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee13" attributeName="transform" type="translate"
-    values="352,143" dur="6.9s" begin="8.0s" fill="freeze"
+    values="864,111" dur="6.9s" begin="8.0s" fill="freeze"
     additive="sum"/>
 
 
@@ -1054,13 +1057,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -462,-39 C -231,-20 0,-20 0,0"
+      path="M -926,-23 C -463,-12 0,-20 0,0"
       dur="7.1s" begin="9.2s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="7.1s" begin="9.2s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee14" attributeName="transform" type="translate"
-    values="402,128" dur="7.1s" begin="9.2s" fill="freeze"
+    values="866,112" dur="7.1s" begin="9.2s" fill="freeze"
     additive="sum"/>
 
 
@@ -1087,13 +1090,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -460,-46 C -230,-23 0,-20 0,0"
+      path="M -412,-62 C -206,-31 0,-20 0,0"
       dur="7.7s" begin="9.9s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="7.7s" begin="9.9s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee15" attributeName="transform" type="translate"
-    values="400,128" dur="7.7s" begin="9.9s" fill="freeze"
+    values="352,144" dur="7.7s" begin="9.9s" fill="freeze"
     additive="sum"/>
 
 
@@ -1120,13 +1123,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -926,-65 C -463,-33 0,-20 0,0"
+      path="M -414,-81 C -207,-41 0,-20 0,0"
       dur="4.8s" begin="10.5s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="4.8s" begin="10.5s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee16" attributeName="transform" type="translate"
-    values="866,128" dur="4.8s" begin="10.5s" fill="freeze"
+    values="354,144" dur="4.8s" begin="10.5s" fill="freeze"
     additive="sum"/>
 
 
@@ -1153,13 +1156,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 186,-29 C 93,-15 0,-20 0,0"
+      path="M 650,-29 C 325,-15 0,-20 0,0"
       dur="6.0s" begin="11.2s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="6.0s" begin="11.2s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee17" attributeName="transform" type="translate"
-    values="866,128" dur="6.0s" begin="11.2s" fill="freeze"
+    values="402,128" dur="6.0s" begin="11.2s" fill="freeze"
     additive="sum"/>
 
 
@@ -1186,13 +1189,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -896,-23 C -449,-12 0,-20 0,0"
+      path="M -464,-55 C -233,-28 0,-20 0,0"
       dur="7.9s" begin="11.1s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="7.9s" begin="11.1s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee18" attributeName="transform" type="translate"
-    values="836,96" dur="7.9s" begin="11.1s" fill="freeze"
+    values="404,128" dur="7.9s" begin="11.1s" fill="freeze"
     additive="sum"/>
 
 
@@ -1219,13 +1222,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -892,30 C -447,15 0,-20 0,0"
+      path="M -924,-2 C -463,-1 0,-20 0,0"
       dur="5.4s" begin="11.7s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="5.4s" begin="11.7s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee19" attributeName="transform" type="translate"
-    values="832,97" dur="5.4s" begin="11.7s" fill="freeze"
+    values="864,129" dur="5.4s" begin="11.7s" fill="freeze"
     additive="sum"/>
 
 
@@ -1252,13 +1255,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -417,-53 C -209,-27 0,-20 0,0"
+      path="M -929,-21 C -465,-11 0,-20 0,0"
       dur="6.3s" begin="13.0s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="6.3s" begin="13.0s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee20" attributeName="transform" type="translate"
-    values="357,156" dur="6.3s" begin="13.0s" fill="freeze"
+    values="869,124" dur="6.3s" begin="13.0s" fill="freeze"
     additive="sum"/>
 
 
@@ -1285,13 +1288,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -413,-58 C -207,-29 0,-20 0,0"
+      path="M -893,6 C -447,3 0,-20 0,0"
       dur="4.3s" begin="12.6s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="4.3s" begin="12.6s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee21" attributeName="transform" type="translate"
-    values="353,159" dur="4.3s" begin="12.6s" fill="freeze"
+    values="833,95" dur="4.3s" begin="12.6s" fill="freeze"
     additive="sum"/>
 
 
@@ -1318,13 +1321,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -912,1 C -457,0 0,-20 0,0"
+      path="M -896,49 C -449,24 0,-20 0,0"
       dur="5.2s" begin="13.5s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="5.2s" begin="13.5s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee22" attributeName="transform" type="translate"
-    values="852,140" dur="5.2s" begin="13.5s" fill="freeze"
+    values="836,92" dur="5.2s" begin="13.5s" fill="freeze"
     additive="sum"/>
 
 
@@ -1351,13 +1354,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 203,-18 C 101,-10 0,-20 0,0"
+      path="M 699,-34 C 349,-18 0,-20 0,0"
       dur="4.8s" begin="14.2s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="4.8s" begin="14.2s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee23" attributeName="transform" type="translate"
-    values="849,140" dur="4.8s" begin="14.2s" fill="freeze"
+    values="353,156" dur="4.8s" begin="14.2s" fill="freeze"
     additive="sum"/>
 
 
@@ -1384,13 +1387,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -960,37 C -481,18 0,-20 0,0"
+      path="M -416,-27 C -209,-14 0,-20 0,0"
       dur="5.2s" begin="15.1s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="5.2s" begin="15.1s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee24" attributeName="transform" type="translate"
-    values="900,92" dur="5.2s" begin="15.1s" fill="freeze"
+    values="356,156" dur="5.2s" begin="15.1s" fill="freeze"
     additive="sum"/>
 
 
@@ -1417,13 +1420,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 153,59 C 76,29 0,-20 0,0"
+      path="M 201,11 C 100,5 0,-20 0,0"
       dur="6.4s" begin="15.3s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="6.4s" begin="15.3s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee25" attributeName="transform" type="translate"
-    values="899,89" dur="6.4s" begin="15.3s" fill="freeze"
+    values="851,137" dur="6.4s" begin="15.3s" fill="freeze"
     additive="sum"/>
 
 
@@ -1450,13 +1453,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 202,24 C 101,12 0,-20 0,0"
+      path="M 202,8 C 101,4 0,-20 0,0"
       dur="7.8s" begin="16.3s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="7.8s" begin="16.3s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee26" attributeName="transform" type="translate"
-    values="850,125" dur="7.8s" begin="16.3s" fill="freeze"
+    values="850,141" dur="7.8s" begin="16.3s" fill="freeze"
     additive="sum"/>
 
 
@@ -1483,13 +1486,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 199,-56 C 99,-28 0,-20 0,0"
+      path="M 151,-24 C 75,-12 0,-20 0,0"
       dur="7.8s" begin="16.5s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="7.8s" begin="16.5s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee27" attributeName="transform" type="translate"
-    values="853,126" dur="7.8s" begin="16.5s" fill="freeze"
+    values="901,94" dur="7.8s" begin="16.5s" fill="freeze"
     additive="sum"/>
 
 
@@ -1516,13 +1519,13 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M -557,-13 C -279,-7 0,-20 0,0"
+      path="M -957,-29 C -479,-15 0,-20 0,0"
       dur="5.0s" begin="17.6s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="5.0s" begin="17.6s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee28" attributeName="transform" type="translate"
-    values="497,75" dur="5.0s" begin="17.6s" fill="freeze"
+    values="897,91" dur="5.0s" begin="17.6s" fill="freeze"
     additive="sum"/>
 
 
@@ -1549,13 +1552,112 @@
 
     <!-- Fly-in animation -->
     <animateMotion
-      path="M 553,47 C 276,23 0,-20 0,0"
+      path="M 153,31 C 76,15 0,-20 0,0"
       dur="6.3s" begin="17.5s" fill="freeze"/>
     <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
       dur="6.3s" begin="17.5s" fill="freeze"/>
   </g>
   <animateTransform xlink:href="#bee29" attributeName="transform" type="translate"
-    values="499,112" dur="6.3s" begin="17.5s" fill="freeze"
+    values="899,128" dur="6.3s" begin="17.5s" fill="freeze"
+    additive="sum"/>
+
+
+  <g id="bee30" opacity="0">
+    <!-- Body -->
+    <ellipse cx="0" cy="0" rx="4" ry="2.5" fill="#f59e0b"/>
+    <ellipse cx="0" cy="0" rx="4" ry="2.5" fill="none" stroke="#1a1a2e" stroke-width="0.6"
+             stroke-dasharray="1.5 1.5"/>
+    <!-- Head -->
+    <circle cx="4.5" cy="0" r="2" fill="#d97706"/>
+    <!-- Eyes -->
+    <circle cx="5.5" cy="-0.7" r="0.5" fill="#1a1a2e"/>
+    <!-- Wings -->
+    <ellipse cx="-1" cy="-3" rx="3.5" ry="1.8" fill="white" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate"
+        values="0,-1,-3;15,-1,-3;0,-1,-3;-15,-1,-3;0,-1,-3"
+        dur="0.12s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="1" cy="-3" rx="3.5" ry="1.8" fill="white" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate"
+        values="0,1,-3;-15,1,-3;0,1,-3;15,1,-3;0,1,-3"
+        dur="0.12s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- Fly-in animation -->
+    <animateMotion
+      path="M -961,9 C -481,4 0,-20 0,0"
+      dur="4.0s" begin="18.4s" fill="freeze"/>
+    <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
+      dur="4.0s" begin="18.4s" fill="freeze"/>
+  </g>
+  <animateTransform xlink:href="#bee30" attributeName="transform" type="translate"
+    values="901,124" dur="4.0s" begin="18.4s" fill="freeze"
+    additive="sum"/>
+
+
+  <g id="bee31" opacity="0">
+    <!-- Body -->
+    <ellipse cx="0" cy="0" rx="4" ry="2.5" fill="#f59e0b"/>
+    <ellipse cx="0" cy="0" rx="4" ry="2.5" fill="none" stroke="#1a1a2e" stroke-width="0.6"
+             stroke-dasharray="1.5 1.5"/>
+    <!-- Head -->
+    <circle cx="4.5" cy="0" r="2" fill="#d97706"/>
+    <!-- Eyes -->
+    <circle cx="5.5" cy="-0.7" r="0.5" fill="#1a1a2e"/>
+    <!-- Wings -->
+    <ellipse cx="-1" cy="-3" rx="3.5" ry="1.8" fill="white" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate"
+        values="0,-1,-3;15,-1,-3;0,-1,-3;-15,-1,-3;0,-1,-3"
+        dur="0.12s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="1" cy="-3" rx="3.5" ry="1.8" fill="white" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate"
+        values="0,1,-3;-15,1,-3;0,1,-3;15,1,-3;0,1,-3"
+        dur="0.12s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- Fly-in animation -->
+    <animateMotion
+      path="M 199,-43 C 99,-22 0,-20 0,0"
+      dur="7.2s" begin="18.7s" fill="freeze"/>
+    <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
+      dur="7.2s" begin="18.7s" fill="freeze"/>
+  </g>
+  <animateTransform xlink:href="#bee31" attributeName="transform" type="translate"
+    values="853,127" dur="7.2s" begin="18.7s" fill="freeze"
+    additive="sum"/>
+
+
+  <g id="bee32" opacity="0">
+    <!-- Body -->
+    <ellipse cx="0" cy="0" rx="4" ry="2.5" fill="#f59e0b"/>
+    <ellipse cx="0" cy="0" rx="4" ry="2.5" fill="none" stroke="#1a1a2e" stroke-width="0.6"
+             stroke-dasharray="1.5 1.5"/>
+    <!-- Head -->
+    <circle cx="4.5" cy="0" r="2" fill="#d97706"/>
+    <!-- Eyes -->
+    <circle cx="5.5" cy="-0.7" r="0.5" fill="#1a1a2e"/>
+    <!-- Wings -->
+    <ellipse cx="-1" cy="-3" rx="3.5" ry="1.8" fill="white" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate"
+        values="0,-1,-3;15,-1,-3;0,-1,-3;-15,-1,-3;0,-1,-3"
+        dur="0.12s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="1" cy="-3" rx="3.5" ry="1.8" fill="white" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate"
+        values="0,1,-3;-15,1,-3;0,1,-3;15,1,-3;0,1,-3"
+        dur="0.12s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- Fly-in animation -->
+    <animateMotion
+      path="M -913,-14 C -457,-7 0,-20 0,0"
+      dur="7.2s" begin="19.8s" fill="freeze"/>
+    <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.05;1"
+      dur="7.2s" begin="19.8s" fill="freeze"/>
+  </g>
+  <animateTransform xlink:href="#bee32" attributeName="transform" type="translate"
+    values="853,125" dur="7.2s" begin="19.8s" fill="freeze"
     additive="sum"/>
 
 <text x="60" y="330" font-family="monospace" font-size="9" fill="#a78bfa" opacity="0.6">Less</text>
