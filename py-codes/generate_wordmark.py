@@ -17,8 +17,9 @@ Re-run manually if the name, role, or location change.
 import base64
 import io
 import os
+import random
 
-from PIL import ImageFont
+from PIL import Image, ImageFont
 
 from pixel_font import SILKSCREEN_BOLD_B64, font_face_style
 
@@ -40,13 +41,15 @@ ADD_ROLE  = "OPEN SOURCE ENTHUSIAST"
 LABEL     = "PLAYER PROFILE"
 
 W = 797  # matches generate_mosaic.py's CARD_W so the cards line up
+CONTENT_LEFT = 36  # left margin shared by the label, name, role and terminal --
+                    # matches the margin every other card already uses
 
 # Everything below (name, creeper, role) keeps the exact relative spacing
 # it always had -- OFFSET just slides that whole block down to make room
 # for the label above it, rather than changing any of their own numbers.
 LABEL_W, LABEL_H = 230, 48
 LABEL_TOP = 14
-LABEL_X = 150           # align to left margin (36px, matching other cards)
+LABEL_X = CONTENT_LEFT
 LABEL_NAME_GAP = 20    # label bottom -> name's cap-top, per the 15-25px spec
 LABEL_NOTCH = 5        # corner cut, keeps it pixel-art rather than rounded-rect
 TAIL_DEPTH = 9
@@ -88,7 +91,7 @@ TERMINAL = [
     ("interests",  "Backend Development • Hardware • IoT"),
 ]
 
-TERM_W = 460
+TERM_W = 440   # narrowed from 460 to clear the cherry-blossom zone below
 TERM_PAD_X, TERM_PAD_Y = 22, 18
 TERM_NOTCH = 5
 CMD_SIZE, OUT_SIZE = 12.5, 12
@@ -98,9 +101,35 @@ TERM_TOP_GAP = 26   # role baseline -> top of terminal
 
 TERM_TOP = ROLE_BASELINE + TERM_TOP_GAP
 TERM_H = TERM_PAD_Y * 2 + len(TERMINAL) * (LINE_H * 2) + (len(TERMINAL) - 1) * BLOCK_GAP
-TERM_X = (W - TERM_W) / 2
+TERM_X = CONTENT_LEFT
 
 H = TERM_TOP + TERM_H + FRAME_PAD + 26
+
+# --- cherry blossom strip, right edge ------------------------------------
+# Jagged Minecraft-terrain-style left boundary instead of a straight cut,
+# fading into the card through a soft fog rather than a hard outline.
+#
+# Knobs:
+#   IMAGE_BASE_X   how far the strip reaches left, on average (bigger = wider strip)
+#   JAGGED_STEPS   how far a band can additionally intrude left, in block units
+#   JAGGED_UNIT    size of one block step, in px
+#   BAND_H         height of one jagged band, in px (smaller = finer stepping)
+#   IMAGE_H        how tall the image is (H = full card height, or set less)
+#   IMAGE_TOP      y-position of the image's top edge
+#   IMAGE_PAN_X    0.0-1.0, which slice of the source photo shows: 0 = its
+#                  left side, 1 = its right side (source is much wider than
+#                  the visible strip once scaled to card height, so only a
+#                  slice of it is ever on screen -- this picks which one)
+CHERRY = os.path.join("logos", "cherry-blossom-bg.jpg")
+IMAGE_BASE_X = 400
+JAGGED_UNIT = 10       # one Minecraft-block step, in px
+JAGGED_STEPS = 4        # max steps a band can intrude left (0..4 * 10 = 0..40px)
+BAND_H = 22
+JAGGED_SEED = 11
+IMAGE_TOP = 0
+IMAGE_H = H            # set smaller than H to not span the full card height
+IMAGE_PAN_X = 0.8
+FOG_WIDTH = 95          # width of the cream fade zone straddling the boundary
 
 
 def data_uri(path, mime):
@@ -123,6 +152,74 @@ def notched_rect(x, y, w, h, n):
         f"M{x+n},{y} L{x+w-n},{y} L{x+w},{y+n} L{x+w},{y+h-n} L{x+w-n},{y+h} "
         f"L{x+n},{y+h} L{x},{y+h-n} L{x},{y+n} Z"
     )
+
+
+def jagged_edge_x():
+    """One x-offset per horizontal band, stepped in whole Minecraft-block
+    units so the boundary reads as blocky terrain, not a wavy line."""
+    rng = random.Random(JAGGED_SEED)
+    n_bands = -(-H // BAND_H)  # ceil
+    return [IMAGE_BASE_X - rng.randint(0, JAGGED_STEPS) * JAGGED_UNIT for _ in range(int(n_bands))]
+
+
+def jagged_boundary_points():
+    """(x,y) pairs tracing just the stepped left boundary, top to bottom."""
+    pts = []
+    for i, x in enumerate(jagged_edge_x()):
+        y_top, y_bot = i * BAND_H, min((i + 1) * BAND_H, H)
+        pts.append((x, y_top))
+        pts.append((x, y_bot))
+    return pts
+
+
+def cherry_blossom_svg():
+    img = Image.open(CHERRY)
+    native_w, native_h = img.size
+    scale = IMAGE_H / native_h
+    disp_w, disp_h = native_w * scale, IMAGE_H
+
+    # the scaled image is far wider than the visible strip; PAN_X picks
+    # which slice shows by sliding img_x between the two extremes where the
+    # strip is still fully covered (image left edge at IMAGE_BASE_X = shows
+    # the source's left side; image right edge at W = shows its right side)
+    img_x_show_left = IMAGE_BASE_X
+    img_x_show_right = W - disp_w
+    img_x = img_x_show_left + IMAGE_PAN_X * (img_x_show_right - img_x_show_left)
+
+    # Smoothly trace the card perimeter with matching rx=10 rounded right corners
+    # and climb back up the jagged Minecraft-style steps on the left
+    card_r = 10
+    boundary = jagged_boundary_points()
+    path_d = (
+        f"M{boundary[0][0]},0 "
+        f"L{W - card_r},0 "
+        f"A{card_r},{card_r} 0 0 1 {W},{card_r} "
+        f"L{W},{H - card_r} "
+        f"A{card_r},{card_r} 0 0 1 {W - card_r},{H} "
+        f"L{boundary[-1][0]},{H} "
+        + " ".join(f"L{x},{y}" for x, y in reversed(boundary))
+        + " Z"
+    )
+
+    fog_x0 = IMAGE_BASE_X - JAGGED_STEPS * JAGGED_UNIT - 15
+    clip_def = (
+        f'<clipPath id="cherryClip"><path d="{path_d}"/></clipPath>'
+        f'<linearGradient id="fogFade" x1="{fog_x0}" x2="{fog_x0 + FOG_WIDTH}" '
+        f'y1="0" y2="0" gradientUnits="userSpaceOnUse">'
+        f'<stop offset="0%" stop-color="{PAPER}" stop-opacity="1"/>'
+        f'<stop offset="100%" stop-color="{PAPER}" stop-opacity="0"/>'
+        f'</linearGradient>'
+    )
+    body = (
+        f'<g clip-path="url(#cherryClip)">'
+        f'<image href="{data_uri(CHERRY, "image/jpeg")}" x="{img_x:.1f}" y="{IMAGE_TOP}" '
+        f'width="{disp_w:.1f}" height="{disp_h:.1f}"/>'
+        # soft cream fade over the jagged boundary -- lets the image mingle
+        # into the card instead of stopping at a hard edge
+        f'<rect x="{fog_x0}" y="0" width="{FOG_WIDTH}" height="{H}" fill="url(#fogFade)"/>'
+        f'</g>'
+    )
+    return clip_def, body
 
 
 def terminal_svg():
@@ -174,7 +271,7 @@ def name_width():
 
 name_w = name_width()
 group_w = name_w + CREEPER_GAP + CREEPER_SIZE
-start_x = (W - group_w) / 2
+start_x = CONTENT_LEFT
 
 # centre the creeper on the name's cap height rather than its baseline.
 # 0.62 is Silkscreen's measured cap ratio, taken off a render -- not a guess.
@@ -182,14 +279,18 @@ cap_top = NAME_BASELINE - NAME_SIZE * 0.62
 creeper_y = (cap_top + NAME_BASELINE) / 2 - CREEPER_SIZE / 2
 creeper_x = start_x + name_w + CREEPER_GAP
 
+cherry_clip_def, cherry_body = cherry_blossom_svg()
+
 svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
 {font_face_style()}
+<defs>{cherry_clip_def}</defs>
 <rect width="{W}" height="{H}" rx="10" fill="{PAPER}" stroke="{GRID_LINE}" stroke-width="1"/>
+{cherry_body}
 <path d="{label_path()}" fill="#fffdf5" stroke="{INK}" stroke-width="1.5" stroke-linejoin="round"/>
 <text x="{LABEL_X + LABEL_W / 2:.0f}" y="{LABEL_TOP + LABEL_H / 2 + 5:.0f}" text-anchor="middle" class="pixel" font-size="15" letter-spacing="1.5" fill="{MC_GREEN}">{LABEL}</text>
 <text x="{start_x:.0f}" y="{NAME_BASELINE}" class="pixel" font-size="{NAME_SIZE}" letter-spacing="{NAME_TRACK}" fill="{INK}">{NAME}</text>
 <image href="{data_uri(CREEPER, "image/avif")}" x="{creeper_x:.0f}" y="{creeper_y:.0f}" width="{CREEPER_SIZE}" height="{CREEPER_SIZE}" image-rendering="pixelated"/>
-<text x="{start_x + group_w / 2:.0f}" y="{ROLE_BASELINE}" text-anchor="middle" font-family="monospace" font-size="13" letter-spacing="1"><tspan fill="{MC_GREEN}" stroke-width="0.6" font-weight="bold">{ROLE}</tspan><tspan fill="{TEXT_MID}">  ·  {ADD_ROLE}</tspan></text>
+<text x="{start_x:.0f}" y="{ROLE_BASELINE}" font-family="monospace" font-size="13" letter-spacing="1"><tspan fill="{MC_GREEN}" stroke-width="0.6" font-weight="bold">{ROLE}</tspan><tspan fill="{TEXT_MID}">  ·  {ADD_ROLE}</tspan></text>
 {terminal_svg()}
 </svg>'''
 
