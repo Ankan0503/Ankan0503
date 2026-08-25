@@ -110,12 +110,28 @@ def weeks_to_levels(weeks):
     return grid
 
 
-def current_streak(levels):
-    """Consecutive active days counting back from the most recent day with data."""
-    flat = [lvl for week in levels for lvl in week]
+def current_streak(weeks):
+    """
+    Consecutive active days counting back from today.
+    If today has 0 commits so far, streak from yesterday is counted.
+    """
+    all_days = []
+    for week in weeks:
+        for day in week.get("contributionDays", []):
+            all_days.append(day.get("contributionCount", 0))
+
+    if not all_days:
+        return 0
+
     streak = 0
-    for lvl in reversed(flat):
-        if lvl >= 1:
+    start_idx = len(all_days) - 1
+
+    # If today (last recorded day) has no commits yet, don't break the streak from yesterday
+    if all_days[start_idx] == 0 and start_idx > 0:
+        start_idx -= 1
+
+    for i in range(start_idx, -1, -1):
+        if all_days[i] > 0:
             streak += 1
         else:
             break
@@ -156,7 +172,7 @@ if __name__ == "__main__":
     print("Fetching contributions...")
     weeks = fetch_contributions()
     levels = weeks_to_levels(weeks)
-    streak = current_streak(levels)
+    streak = current_streak(weeks)
     print(f"Streak: {streak} days")
 
     svg_content = render_mosaic_svg(levels, streak)

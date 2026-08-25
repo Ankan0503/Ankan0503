@@ -73,7 +73,7 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewB
 <rect width="{W}" height="{H}" rx="10" fill="{PAPER}" stroke="{GRID_LINE}" stroke-width="1"/>
 <text x="{start_x:.0f}" y="{NAME_BASELINE}" class="pixel" font-size="{NAME_SIZE}" letter-spacing="{NAME_TRACK}" fill="{INK}">{NAME}</text>
 <image href="{data_uri(CREEPER, "image/avif")}" x="{creeper_x:.0f}" y="{creeper_y:.0f}" width="{CREEPER_SIZE}" height="{CREEPER_SIZE}" image-rendering="pixelated"/>
-<text x="{start_x + group_w / 2:.0f}" y="{ROLE_BASELINE}" text-anchor="middle" font-family="monospace" font-size="13" letter-spacing="1"><tspan fill="{MC_GREEN}" font-weight="bold">{ROLE}</tspan><tspan fill="{TEXT_MID}">  ·  {ADD_ROLE}</tspan></text>
+<text x="{start_x + group_w / 2:.0f}" y="{ROLE_BASELINE}" text-anchor="middle" font-family="monospace" font-size="13" letter-spacing="1"><tspan fill="{MC_GREEN}" stroke-width="0.6" font-weight="bold">{ROLE}</tspan><tspan fill="{TEXT_MID}">  ·  {ADD_ROLE}</tspan></text>
 </svg>'''
 
 with open(OUTPUT_SVG, "w", encoding="utf-8") as f:
