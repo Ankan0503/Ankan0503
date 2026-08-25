@@ -27,11 +27,11 @@ PAPER     = "#f7f4ea"
 GRID_LINE = "#e6e0cf"
 TEXT_MID  = "#7c7460"
 
-TILE_W, TILE_H = 72, 72
+TILE_W, TILE_H = 72, 58
 SCALE = 2                 # 16 * 2 = 32px glyph
 GLYPH = 16 * SCALE
-GLYPH_Y = 12
-NAME_BASELINE = 60
+GLYPH_Y = 8
+NAME_BASELINE = 50
 R = 10
 
 BLANK = "................"
