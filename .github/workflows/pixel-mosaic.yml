@@ -25,7 +25,7 @@ jobs:
           python-version: "3.11"
 
       - name: 📦 Install Dependencies
-        run: pip install requests
+        run: pip install requests Pillow
 
       - name: 🟩 Generate Pixel Mosaic SVG
         env:
