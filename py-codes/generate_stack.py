@@ -5,9 +5,10 @@ generate_stack.py
 One-off (not scheduled): renders the tech-stack card as an SVG, matching
 the wordmark/mosaic pixel-paper theme.
 
-Each technology's pixel-art logo lives in logos/ and is embedded as a
-base64 data URI -- an SVG shown through a README <img> tag cannot fetch
-external files, so inlining is what makes the logos appear on GitHub.
+Each technology's pixel-art logo (and the pickaxe in the heading) lives
+in logos/ and is embedded as a base64 data URI -- an SVG shown through a
+README <img> tag cannot fetch external files, so inlining is what makes
+them appear on GitHub.
 
 Re-run manually if the stack changes.
 """
@@ -35,14 +36,14 @@ CATEGORIES = [
 ]
 
 W = 797
-PAD_TOP, PAD_BOTTOM = 38, 30
+HEADING_H = 58          # room for the pickaxe + "TECH STACK" heading
+PAD_TOP, PAD_BOTTOM = 38 + HEADING_H, 30
 LABEL_X = 36
 LOGOS_X = 178          # where the logo columns start
-LOGO = 72
+LOGO = 48
 CELL = 142             # horizontal pitch between logos
 NAME_GAP = 15          # logo bottom -> name baseline
 ROW_GAP = 24
-
 
 def data_uri(stem):
     path = os.path.join(LOGO_DIR, f"{stem}.avif")
@@ -52,6 +53,18 @@ def data_uri(stem):
 
 def render():
     parts = []
+
+    pick_size = 40
+    pick_y = 18
+    parts.append(
+        f'<image href="{data_uri("pickaxe")}" x="{LABEL_X}" y="{pick_y}" '
+        f'width="{pick_size}" height="{pick_size}" image-rendering="pixelated"/>'
+    )
+    parts.append(
+        f'<text x="{LABEL_X + pick_size + 14}" y="{pick_y + pick_size / 2 + 8:.0f}" '
+        f'class="pixel" font-size="22" letter-spacing="2" fill="{INK}">TECH STACK</text>'
+    )
+
     y = PAD_TOP
 
     for label, items in CATEGORIES:
