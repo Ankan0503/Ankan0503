@@ -1,4 +1,4 @@
-name: 🌻 Generate Sunflower Garden
+name: 🟩 Generate Pixel Mosaic
 
 on:
   schedule:
@@ -10,7 +10,7 @@ on:
       - main  # Also regenerate on every push
 
 jobs:
-  build-garden:
+  build-mosaic:
     runs-on: ubuntu-latest
     permissions:
       contents: write  # Need write permission to commit the SVG back
@@ -27,20 +27,20 @@ jobs:
       - name: 📦 Install Dependencies
         run: pip install requests
 
-      - name: 🌻 Generate Sunflower Garden SVG
+      - name: 🟩 Generate Pixel Mosaic SVG
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: python generate_garden.py
+        run: python py-codes/generate_mosaic.py
 
       - name: 📸 Verify SVG was created
         run: |
-          ls -lh sunflower-garden.svg
+          ls -lh pixel-mosaic.svg
           echo "SVG generated successfully!"
 
       - name: 🚀 Commit and Push SVG
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🌻 Daily garden update — bees have landed! [skip ci]"
-          file_pattern: sunflower-garden.svg
+          commit_message: "🟩 Daily mosaic update [skip ci]"
+          file_pattern: pixel-mosaic.svg
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
