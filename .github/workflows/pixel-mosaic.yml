@@ -29,12 +29,12 @@ jobs:
 
       - name: 🟩 Generate Pixel Mosaic SVG
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
         run: python py-codes/generate_mosaic.py
 
       - name: 📊 Generate GitHub Stats SVG
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
         run: python py-codes/generate_stats.py
 
       - name: 📸 Verify SVGs were created

@@ -50,14 +50,18 @@ query($login: String!) {
 
 def year_alias_query(login, years):
     """One request, one aliased contributionsCollection per calendar year."""
+    now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    this_year = datetime.now(timezone.utc).year
     parts = []
     for i, year in enumerate(years):
         frm = f"{year}-01-01T00:00:00Z"
-        to = f"{year + 1}-01-01T00:00:00Z"
+        to = now_iso if year == this_year else f"{year}-12-31T23:59:59Z"
         parts.append(f'''
         y{i}: contributionsCollection(from: "{frm}", to: "{to}") {{
           totalCommitContributions
+          restrictedContributionsCount
           contributionCalendar {{
+            totalContributions
             weeks {{ contributionDays {{ date contributionCount }} }}
           }}
         }}''')
@@ -80,23 +84,43 @@ def gql(query, variables):
     return data["data"]
 
 
-def longest_and_current_streak(all_days):
-    """Returns (current, longest) streak."""
-    if not all_days:
+def calculate_streaks(daily_map):
+    """Calculates exact current streak and longest streak across entire history up to today."""
+    from datetime import timedelta
+    now = datetime.now(timezone.utc)
+    today_str = now.strftime("%Y-%m-%d")
+
+    # Filter out any future dates and sort chronologically
+    sorted_dates = sorted(d for d in daily_map.keys() if d <= today_str)
+    if not sorted_dates:
         return 0, 0
 
-    longest = run = 0
-    for count in all_days:
-        run = run + 1 if count > 0 else 0
-        longest = max(longest, run)
+    longest = 0
+    current_run = 0
+    for d in sorted_dates:
+        count = daily_map[d]
+        if count > 0:
+            current_run += 1
+            if current_run > longest:
+                longest = current_run
+        else:
+            current_run = 0
 
+    # Calculate current streak: if today has commits, start from today; else from yesterday
     current = 0
-    i = len(all_days) - 1
-    if all_days[i] == 0 and i > 0:
-        i -= 1
-    while i >= 0 and all_days[i] > 0:
-        current += 1
-        i -= 1
+    if daily_map.get(today_str, 0) > 0:
+        check_date = now.date()
+    else:
+        check_date = (now - timedelta(days=1)).date()
+
+    while True:
+        d_str = check_date.strftime("%Y-%m-%d")
+        if daily_map.get(d_str, 0) > 0:
+            current += 1
+            check_date -= timedelta(days=1)
+        else:
+            break
+
     return current, longest
 
 
@@ -104,8 +128,13 @@ def fetch_stats():
     if not GH_TOKEN:
         print("Warning: No GH_TOKEN found. Using demo data.")
         rng = random.Random(3)
-        days = [rng.choices([0, 1, 2, 4, 7], weights=[35, 25, 20, 12, 8])[0] for _ in range(900)]
-        current, longest = longest_and_current_streak(days)
+        daily_map = {}
+        base = datetime.now(timezone.utc)
+        from datetime import timedelta
+        for d in range(900):
+            dt = (base - timedelta(days=d)).strftime("%Y-%m-%d")
+            daily_map[dt] = rng.choices([0, 1, 2, 4, 7], weights=[35, 25, 20, 12, 8])[0]
+        current, longest = calculate_streaks(daily_map)
         return {
             "repos": 18, "commits": 3482, "prs": 41,
             "followers": 27, "stars": 62,
@@ -123,15 +152,18 @@ def fetch_stats():
     yearly = gql(year_alias_query(USERNAME, years), {"login": USERNAME})["user"]
 
     total_commits = 0
-    all_days = []
+    daily_map = {}
     for i in range(len(years)):
         y = yearly[f"y{i}"]
-        total_commits += y["totalCommitContributions"]
+        commit_count = y.get("totalCommitContributions", 0) + y.get("restrictedContributionsCount", 0)
+        total_commits += commit_count
         for week in y["contributionCalendar"]["weeks"]:
             for day in week["contributionDays"]:
-                all_days.append(day["contributionCount"])
+                date = day["date"]
+                count = day["contributionCount"]
+                daily_map[date] = max(daily_map.get(date, 0), count)
 
-    current, longest = longest_and_current_streak(all_days)
+    current, longest = calculate_streaks(daily_map)
 
     return {
         "repos": repos["totalCount"],
