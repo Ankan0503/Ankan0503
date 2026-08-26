@@ -32,15 +32,20 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: python py-codes/generate_mosaic.py
 
-      - name: 📸 Verify SVG was created
-        run: |
-          ls -lh pixel-mosaic.svg
-          echo "SVG generated successfully!"
+      - name: 📊 Generate GitHub Stats SVG
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: python py-codes/generate_stats.py
 
-      - name: 🚀 Commit and Push SVG
+      - name: 📸 Verify SVGs were created
+        run: |
+          ls -lh pixel-mosaic.svg stats.svg
+          echo "SVGs generated successfully!"
+
+      - name: 🚀 Commit and Push SVGs
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🟩 Daily mosaic update [skip ci]"
-          file_pattern: pixel-mosaic.svg
+          commit_message: "🟩 Daily mosaic + stats update [skip ci]"
+          file_pattern: pixel-mosaic.svg stats.svg
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
