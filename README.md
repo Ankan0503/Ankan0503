@@ -36,9 +36,9 @@
 </details>
 
 <details open>
-<summary><b>📁 HHGoa</b> · 3 repos</summary>
+<summary><b>📁 Hacker House Goa</b> · 3 repos</summary>
 
-<sub>Hack Heritage Goa.</sub>
+<sub>HHGoa.</sub>
 
 - **[hhgoa-task3-face-blockchain](https://github.com/Ankan0503/hhgoa-task3-face-blockchain)** — Face identification pipeline with blockchain attestation: ArcFace biometrics, multi-engine reverse image search, biometric cross-validation, and EIP-712 attestations on Ethereum Sepolia.  <sub>`Python` · Sept 2026</sub>
 - **[RagInGoa](https://github.com/Ankan0503/RagInGoa)**  <sub>`Python` · Aug 2026</sub>
