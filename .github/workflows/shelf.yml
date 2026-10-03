@@ -1,7 +1,4 @@
-name: Shelf
-
-# Regenerates the folder index in README.md.
-# Runs weekly, on config changes, and on demand.
+name: 📦 Generate Projects
 
 on:
   schedule:
@@ -9,49 +6,37 @@ on:
   push:
     paths:
       - shelf/shelf.config.json
-      - shelf/scripts/build.mjs
+      - py-codes/generate_projects.py
       - .github/workflows/shelf.yml
   workflow_dispatch:
 
-permissions:
-  contents: write
-
-concurrency:
-  group: shelf
-  cancel-in-progress: true
-
 jobs:
-  build:
+  build-projects:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
-      - uses: actions/checkout@v4
+      - name: 🛎️ Checkout Repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
         with:
-          node-version: 22
+          python-version: "3.11"
 
-      - name: Generate the index
+      - name: 📦 Generate Projects SVG
         env:
-          # Raises the API rate limit and lets the job see private repos
-          # when run from the account that owns them.
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node shelf/scripts/build.mjs --config shelf/shelf.config.json --out README.md
+          GH_TOKEN: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
+        run: python py-codes/generate_projects.py
 
-      - name: Commit if it changed
-        run: |
-          if git diff --quiet -- README.md; then
-            echo "No change."
-            exit 0
-          fi
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "Shelf: refresh project index"
-          # Other workflows in this repo also commit (the mosaic and stats SVGs),
-          # so rebase before pushing rather than failing on a stale ref.
-          for i in 1 2 3; do
-            git pull --rebase --autostash && git push && exit 0
-            echo "push attempt $i failed, retrying"
-            sleep 5
-          done
-          exit 1
+      - name: 📸 Verify SVG was created
+        run: ls -lh projects.svg
+
+      - name: 🚀 Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "📦 Projects update [skip ci]"
+          file_pattern: projects.svg README.md
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"

@@ -1,8 +1,6 @@
 {
   "owner": "Ankan0503",
-  "heading": "## Projects",
-  "toolUrl": "https://github.com/Ankan0503/Ankan0503/tree/main/shelf",
-  "showUnsorted": false,
+
   "folders": [
     {
       "name": "SIH 2026",
@@ -16,8 +14,14 @@
     },
     {
       "name": "Hacktoberfest 2026",
-      "blurb": "Open-source AI, all October.",
+      "blurb": "Open-source AI, all October. Tag a repo hf2026 and it lands here.",
       "tags": ["hf2026"]
     }
+  ],
+
+  "loose": [
+    "LabZero-Online-Lab-Visualization",
+    "Smart-Energy-Saver-and-Home-Safety",
+    "MindBloom-SehatSaarthi"
   ]
 }
