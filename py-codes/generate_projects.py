@@ -248,7 +248,7 @@ def render_svg(config, folders, loose, missing):
     for f in folders:
         section(f["name"], f.get("blurb"), f["repos"], with_icon=True)
     if loose:
-        section("Other projects", None, loose, with_icon=False)
+        section(config.get("looseLabel", "Other projects"), None, loose, with_icon=False)
 
     if missing:
         parts.append(
@@ -270,7 +270,7 @@ def render_svg(config, folders, loose, missing):
 
 # -------------------------------------------------------------------- readme ---
 
-def render_block(folders, loose):
+def render_block(folders, loose, loose_label="Other projects"):
     """The README block: the card, plus collapsed links (an <img> isn't clickable)."""
     lines = [
         START,
@@ -291,7 +291,7 @@ def render_block(folders, loose):
             lines.append(f'<sub>· <a href="{r["html_url"]}">{r["name"]}</a></sub><br/>')
         lines.append("")
     if loose:
-        lines.append("<sub><b>Other projects</b></sub>")
+        lines.append(f'<sub><b>{esc(loose_label)}</b></sub>')
         lines.append("")
         for r in loose:
             lines.append(f'<sub>· <a href="{r["html_url"]}">{r["name"]}</a></sub><br/>')
@@ -321,7 +321,10 @@ def main():
     OUTPUT_SVG.write_text(svg, encoding="utf-8")
 
     readme = README.read_text(encoding="utf-8")
-    README.write_text(splice(readme, render_block(folders, loose)), encoding="utf-8")
+    README.write_text(
+        splice(readme, render_block(folders, loose, config.get("looseLabel", "Other projects"))),
+        encoding="utf-8",
+    )
 
     filed = sum(len(f["repos"]) for f in folders) + len(loose)
     print(f"projects: {len(repos)} repos on the account, {filed} shown")

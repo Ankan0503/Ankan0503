@@ -27,6 +27,10 @@
 <sub>· <a href="https://github.com/Ankan0503/hhgoa-task3-face-blockchain">hhgoa-task3-face-blockchain</a></sub><br/>
 <sub>· <a href="https://github.com/Ankan0503/RagInGoa">RagInGoa</a></sub><br/>
 
+<sub><b>Hacktoberfest 2026</b></sub>
+
+<sub>· <a href="https://github.com/Ankan0503/repo-shelf">repo-shelf</a></sub><br/>
+
 <sub><b>Other projects</b></sub>
 
 <sub>· <a href="https://github.com/Ankan0503/LabZero-Online-Lab-Visualization">LabZero-Online-Lab-Visualization</a></sub><br/>
