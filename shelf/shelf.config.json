@@ -1,0 +1,23 @@
+{
+  "owner": "Ankan0503",
+  "heading": "## Projects",
+  "toolUrl": "https://github.com/Ankan0503/Ankan0503/tree/main/shelf",
+  "showUnsorted": false,
+  "folders": [
+    {
+      "name": "SIH 2026",
+      "blurb": "Smart India Hackathon.",
+      "tags": ["sih", "sih-orca"]
+    },
+    {
+      "name": "HHGoa",
+      "blurb": "Hack Heritage Goa.",
+      "tags": ["hhgoa"]
+    },
+    {
+      "name": "Hacktoberfest 2026",
+      "blurb": "Open-source AI, all October.",
+      "tags": ["hf2026"]
+    }
+  ]
+}

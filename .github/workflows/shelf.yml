@@ -1,0 +1,57 @@
+name: Shelf
+
+# Regenerates the folder index in README.md.
+# Runs weekly, on config changes, and on demand.
+
+on:
+  schedule:
+    - cron: "17 4 * * 1"
+  push:
+    paths:
+      - shelf/shelf.config.json
+      - shelf/scripts/build.mjs
+      - .github/workflows/shelf.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: shelf
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generate the index
+        env:
+          # Raises the API rate limit and lets the job see private repos
+          # when run from the account that owns them.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node shelf/scripts/build.mjs --config shelf/shelf.config.json --out README.md
+
+      - name: Commit if it changed
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "No change."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Shelf: refresh project index"
+          # Other workflows in this repo also commit (the mosaic and stats SVGs),
+          # so rebase before pushing rather than failing on a stale ref.
+          for i in 1 2 3; do
+            git pull --rebase --autostash && git push && exit 0
+            echo "push attempt $i failed, retrying"
+            sleep 5
+          done
+          exit 1
