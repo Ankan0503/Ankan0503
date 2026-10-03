@@ -138,13 +138,16 @@ def gather(config, repos):
                 out.append(r)
         return out
 
-    def take_tagged(tags):
+    def take_tagged(tags, exclude=()):
         tags = {t.lower() for t in tags or []}
         if not tags:
             return []
+        skip = {str(e).lower() for e in exclude or ()}
         hit = [
             r for r in repos
-            if r["name"] not in claimed and tags & {t.lower() for t in r.get("topics") or []}
+            if r["name"] not in claimed
+            and r["name"].lower() not in skip
+            and tags & {t.lower() for t in r.get("topics") or []}
         ]
         hit.sort(key=lambda r: r.get("pushed_at") or "", reverse=True)
         for r in hit:
@@ -153,10 +156,10 @@ def gather(config, repos):
 
     folders = []
     for f in config.get("folders", []):
-        items = take_named(f.get("repos")) + take_tagged(f.get("tags"))
+        items = take_named(f.get("repos")) + take_tagged(f.get("tags"), f.get("exclude"))
         folders.append({"name": f["name"], "blurb": f.get("blurb"), "repos": items})
 
-    loose = take_named(config.get("loose")) + take_tagged(config.get("looseTags"))
+    loose = take_named(config.get("loose")) + take_tagged(config.get("looseTags"), config.get("looseExclude"))
     return folders, loose, missing
 
 
