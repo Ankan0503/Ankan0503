@@ -62,35 +62,37 @@ FOLDER_ROW_H = 30
 # a silver latch and uneven plank tones. Drawn here rather than taken from
 # the game, so nothing copyrighted is redistributed.
 CHEST = [
-    "....############....",
-    "...#LLLLLLLLLLLL#...",
-    "..#LLLLLLLLLLLLLL#..",
-    "..#UUUUUUUUUUUUUU#..",
-    "..#UUUUUUUSSUUUUU#..",
-    "..#UUUUUUUSSUUUUU#..",
-    "..################..",
-    ".#OOOOOOOOOOOOOOOO#.",
-    ".#OOOOOOOOOOOOOOOO#.",
-    ".##################.",
-    ".#llllllmmllllllll#.",
-    ".#mmmmmmmmmmllllmm#.",
-    ".#llllllllllllllll#.",
-    ".#mmmmllllmmmmmmmm#.",
-    ".#dddddddddddddddd#.",
-    ".##################.",
-    "....................",
-    "....................",
+    "........############....",
+    ".....###LLLLLLLLLLL#....",
+    "...##LLLLLLLLLLLLLL#....",
+    "..#ULLLLLLLLLLLLLLL#....",
+    "..#UUUUUUULLLLLLLL##....",
+    "..#UUUUUUUUSSUUUUU#.....",
+    "..#UUUUUUUUSSUUUU#......",
+    "..#UUUUUUUUUUUUU#.......",
+    ".##OOOOOOOOOOOO##.......",
+    ".#OOOOOOOOOOOOOO#.......",
+    "##OOOOOOOOOOOOOOO#......",
+    "#tt###############......",
+    "#ttt#fffffffffffff#.....",
+    "#ttt#ffgggffffffff#.....",
+    "#ttt#ggggggggggggg#.....",
+    "#ttt#fffffffffffff#.....",
+    "#ttt#fffffggggffff#.....",
+    "#ttt#ggggggggggggg#.....",
+    "####################....",
+    "........................",
 ]
 
 PALETTE = {
     "#": "#3a2d20",   # outline
-    "L": "#b07b3a",   # lid, catching the light
+    "L": "#b07b3a",   # lid outer face, catching the light
     "U": "#5a4020",   # lid underside, in shadow
     "S": "#d8d8d8",   # silver latch
-    "O": "#1a1208",   # the dark inside
-    "l": "#c08b45",   # pale plank
-    "m": "#a06a33",   # mid plank
-    "d": "#8a5c2b",   # shaded plank
+    "O": "#140e06",   # the dark inside
+    "f": "#c08b45",   # front plank, pale
+    "g": "#a06a33",   # front plank, mid
+    "t": "#70491f",   # left side face, turned away from the light
 }
 
 
@@ -246,9 +248,9 @@ def render_svg(config, folders, loose, missing):
     card_w = W - 2 * PAD_X - ROW_INDENT
 
     # Heading: chest + PROJECTS, mirroring the pickaxe + TECH STACK heading.
-    parts.append(pixel_art(CHEST, PAD_X, 14, 2, PALETTE))
+    parts.append(pixel_art(CHEST, PAD_X, 12, 2, PALETTE))
     parts.append(
-        f'<text x="{PAD_X + 40 + 14}" y="{16 + 20 + 8}" class="pixel" font-size="22" '
+        f'<text x="{PAD_X + 48 + 14}" y="{16 + 20 + 8}" class="pixel" font-size="22" '
         f'letter-spacing="2" fill="{INK}">PROJECTS</text>'
     )
     total = sum(len(f["repos"]) for f in folders) + len(loose)
