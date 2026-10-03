@@ -19,6 +19,7 @@ private repos when the token owns them).
 Re-run manually, or let .github/workflows/shelf.yml do it.
 """
 
+import base64
 import json
 import os
 import re
@@ -58,63 +59,10 @@ FOLDER_ROW_H = 30
 # ---------------------------------------------------------------- pixel art ---
 
 # A chest, 16x16. '.' is transparent; the rest index into PALETTE below.
-# An open chest, lid tipped back: lit lid, shaded underside, dark interior,
-# a silver latch and uneven plank tones. Drawn here rather than taken from
-# the game, so nothing copyrighted is redistributed.
-CHEST = [
-    "........############....",
-    ".....###LLLLLLLLLLL#....",
-    "...##LLLLLLLLLLLLLL#....",
-    "..#ULLLLLLLLLLLLLLL#....",
-    "..#UUUUUUULLLLLLLL##....",
-    "..#UUUUUUUUSSUUUUU#.....",
-    "..#UUUUUUUUSSUUUU#......",
-    "..#UUUUUUUUUUUUU#.......",
-    ".##OOOOOOOOOOOO##.......",
-    ".#OOOOOOOOOOOOOO#.......",
-    "##OOOOOOOOOOOOOOO#......",
-    "#tt###############......",
-    "#ttt#fffffffffffff#.....",
-    "#ttt#ffgggffffffff#.....",
-    "#ttt#ggggggggggggg#.....",
-    "#ttt#fffffffffffff#.....",
-    "#ttt#fffffggggffff#.....",
-    "#ttt#ggggggggggggg#.....",
-    "####################....",
-    "........................",
-]
-
-PALETTE = {
-    "#": "#3a2d20",   # outline
-    "L": "#b07b3a",   # lid outer face, catching the light
-    "U": "#5a4020",   # lid underside, in shadow
-    "S": "#d8d8d8",   # silver latch
-    "O": "#140e06",   # the dark inside
-    "f": "#c08b45",   # front plank, pale
-    "g": "#a06a33",   # front plank, mid
-    "t": "#70491f",   # left side face, turned away from the light
-}
-
-
-def pixel_art(rows, x, y, scale, palette):
-    """Emit one <rect> per run of identical pixels, so the markup stays small."""
-    out = []
-    for ry, row in enumerate(rows):
-        rx = 0
-        while rx < len(row):
-            ch = row[rx]
-            if ch == ".":
-                rx += 1
-                continue
-            run = 1
-            while rx + run < len(row) and row[rx + run] == ch:
-                run += 1
-            out.append(
-                f'<rect x="{x + rx * scale:.0f}" y="{y + ry * scale:.0f}" '
-                f'width="{run * scale:.0f}" height="{scale:.0f}" fill="{palette[ch]}"/>'
-            )
-            rx += run
-    return "".join(out)
+def data_uri(stem):
+    """An SVG shown through a README <img> cannot fetch files, so inline it."""
+    path = ROOT / "logos" / f"{stem}.avif"
+    return "data:image/avif;base64," + base64.b64encode(path.read_bytes()).decode("ascii")
 
 
 def icon_folder(x, y):
@@ -248,9 +196,12 @@ def render_svg(config, folders, loose, missing):
     card_w = W - 2 * PAD_X - ROW_INDENT
 
     # Heading: chest + PROJECTS, mirroring the pickaxe + TECH STACK heading.
-    parts.append(pixel_art(CHEST, PAD_X, 12, 2, PALETTE))
     parts.append(
-        f'<text x="{PAD_X + 48 + 14}" y="{16 + 20 + 8}" class="pixel" font-size="22" '
+        f'<image href="{data_uri("chest")}" x="{PAD_X}" y="13" width="66" height="44" '
+        f'image-rendering="pixelated"/>'
+    )
+    parts.append(
+        f'<text x="{PAD_X + 66 + 16}" y="{16 + 20 + 8}" class="pixel" font-size="22" '
         f'letter-spacing="2" fill="{INK}">PROJECTS</text>'
     )
     total = sum(len(f["repos"]) for f in folders) + len(loose)
